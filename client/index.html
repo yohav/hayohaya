@@ -14,6 +14,7 @@
  <script src="lib/ngmap/ng-map.min.js"></script>
   <script src="app.js"></script>
   <script src="scripts/controllers/worldMapController.js"></script>
+  <script src="scripts/service/worldMapService.js"></script>
 
 
   <script type="text/javascript">
@@ -28,18 +29,18 @@
       <div ng-controller="worldMapController as vm">
         <h2>בחר שנה בהיסטוריה</h2>
         <md-slider-container>
-        <md-slider flex min="-6000" max="2016" ng-model="color.red" aria-label="red" id="red-slider">
+        <md-slider flex min="0" max="2016" ng-model="year" aria-label="red" id="red-slider">
         </md-slider>
         <md-input-container>
-          <input flex type="number" ng-model="color.red" aria-label="red" aria-controls="red-slider">
+          <input flex type="number" ng-model="year" aria-label="red" aria-controls="red-slider">
         </md-input-container>
 
       </md-slider-container>
 
+        <md-datepicker ng-model="date"></md-datepicker>
 
-
-        <ng-map zoom="11" center="[40.74, -74.18]">
-          <marker position="[40.74, -74.18]" />
+        <ng-map zoom="{{vm.map.zoom}}" center="{{vm.map.center}}">
+          <marker ng-repeat="mark in vm.map.markers" position="{{mark}}" />
           <shape name="circle" radius="400" center="[40.74,-74.18]" radius="4000" />
           <control name="overviewMap" opened="true" />
         </ng-map>
