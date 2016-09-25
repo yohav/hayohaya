@@ -1,11 +1,12 @@
 (function(angular) {
   'use strict';
-angular.module('app', ['ngMaterial'])
+angular.module('app', ['ngMaterial','ngMap'])
 
 //.config(function($locationProvider) {
 //  $locationProvider.html5Mode(true);
 //})
 
+  .value('url',"");
 
 })(window.angular);
 

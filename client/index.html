@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <title>Hayo haya</title>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
-
+  <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+ <script src="lib/ngmap/ng-map.min.js"></script>
   <script src="app.js"></script>
   <script src="scripts/controllers/worldMapController.js"></script>
 
@@ -23,11 +24,25 @@
 
   <div class="container">
     <div class="jumbotron">
-      <h1 class="title">Component Router</h1>
+      <h1 class="title">Hayo Haya</h1>
       <div ng-controller="worldMapController as vm">
-        <md-slider ng-model="myValue" min="5" max="500">
+        <h2>בחר שנה בהיסטוריה</h2>
+        <md-slider-container>
+        <md-slider flex min="-6000" max="2016" ng-model="color.red" aria-label="red" id="red-slider">
         </md-slider>
+        <md-input-container>
+          <input flex type="number" ng-model="color.red" aria-label="red" aria-controls="red-slider">
+        </md-input-container>
 
+      </md-slider-container>
+
+
+
+        <ng-map zoom="11" center="[40.74, -74.18]">
+          <marker position="[40.74, -74.18]" />
+          <shape name="circle" radius="400" center="[40.74,-74.18]" radius="4000" />
+          <control name="overviewMap" opened="true" />
+        </ng-map>
       </div>
     </div>
   </div>
