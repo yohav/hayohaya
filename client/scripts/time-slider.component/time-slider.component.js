@@ -2,6 +2,7 @@
  * Created by lenovo on 9/25/2016.
  */
 (function(angular) {
+    'use strict';
     angular.module('time-slider-module', [])
 
         .component('time-slider',{
@@ -20,7 +21,6 @@
                     </md-slider>
                 </md-slider-container>
             `,
-            bindings: { $router: '<' },
             controller:'TimeSliderComponent'
         });
 
