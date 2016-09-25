@@ -6,6 +6,7 @@
 
         .component('time-slider',{
             template:`
+            djsbfhdsbfhbdsjfbjdsbfh
                 <md-slider-container>
                     <span>R</span>
                     fjesfhdshklfbds
