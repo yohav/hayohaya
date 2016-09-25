@@ -3,25 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <title>Example - example-componentRouter-production</title>
-  <link href="styles.css" rel="stylesheet" type="text/css">
-  
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
-  <script src="node_modules/angular/angular.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
+
   <script src="app.js"></script>
-  <script src="crisis.js"></script>
-  <script src="dialog.js"></script>
-  
+  <script src="scripts/controllers/worldMapController.js"></script>
+
 
   <script type="text/javascript">
     angular.element(document.getElementsByTagName('head')).append(angular.element('<base href="' + window.location.pathname + '" />'));
   </script>
 </head>
 <body ng-app="app">
-  <h1 class="title">Component Router</h1>
-<app></app>
+
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="title">Component Router</h1>
+      <div ng-controller="worldMapController as vm">
+        <md-slider ng-model="myValue" min="5" max="500">
+        </md-slider>
+
+      </div>
+    </div>
+  </div>
 
 <!-- Load up the router library - normally you might use npm and host it locally -->
-<script src="node_modules/@angular/router/angular1/angular_1_router.js"></script>
+
 </body>
 </html>
 
