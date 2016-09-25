@@ -13,7 +13,7 @@
             return {
                 zoom:11,
                 center:[40.74, -74.18],
-                markers:[[40.74, -74.18],[100, -100]],
+                markers:[[14.74, -70.18],[100, -100]],
                 shape:{
                     name:"circle",
                     radius:400

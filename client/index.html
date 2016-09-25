@@ -27,7 +27,7 @@
     <div class="jumbotron">
       <h1 class="title">Hayo Haya</h1>
       <div ng-controller="worldMapController as vm">
-        <h2>בחר שנה בהיסטוריה</h2>
+        <h2 class="inline">בחר שנה בהיסטוריה</h2>  <md-datepicker class="inline" ng-model="date"></md-datepicker>
         <md-slider-container>
         <md-slider flex min="0" max="2016" ng-model="year" aria-label="red" id="red-slider">
         </md-slider>
@@ -37,11 +37,15 @@
 
       </md-slider-container>
 
-        <md-datepicker ng-model="date"></md-datepicker>
 
-        <ng-map zoom="{{vm.map.zoom}}" center="{{vm.map.center}}">
-          <marker ng-repeat="mark in vm.map.markers" position="{{mark}}" />
-          <shape name="circle" radius="400" center="[40.74,-74.18]" radius="4000" />
+
+        <ng-map zoom="{{vm.map.zoom}}" center="{{vm.map.center}}" on-click="vm.setCenter(event)">
+
+            <marker position="{{vm.marker.pos}}" on-click="">
+
+            </marker>
+            <shape name="circle" radius="400" center="{{vm.marker.pos}}" />
+
           <control name="overviewMap" opened="true" />
         </ng-map>
       </div>
