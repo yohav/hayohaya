@@ -12,8 +12,13 @@ config.$inject = ['$stateProvider', '$urlRouterProvider'];
 function config($stateProvider, $urlRouterProvider) {
 	$urlRouterProvider.otherwise('/');
 	$stateProvider
-		.state("private_lessons", {
-			url: "/",
-			templateUrl: 'app/partial/private_lessons.html'
-		});
+	$stateProvider
+		.state('private_lessons',{
+			views: {
+				'private_lessons': {
+					templateUrl: 'private_lessons.html',
+					controller: '..'
+				}
+			}
+		})
 }
