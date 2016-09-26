@@ -3,7 +3,8 @@
 		.module('app', [
 			'ngMaterial',
 			'ngAnimate',
-			'ui.router'])
+			'ui.router',
+		'schemaForm'])
 		.config(config);
 
 	config.$inject = ['$stateProvider', '$urlRouterProvider'];
