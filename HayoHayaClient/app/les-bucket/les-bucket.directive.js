@@ -3,9 +3,9 @@
 		.module('app')
 		.directive('lesBucket', lesBucket);
 
-	lesBucket.$inject = ['lesLessonSrv', 'bucketConfiguration'];
+	lesBucket.$inject = ['lesLessonSrv', 'bucketConfiguration', '$mdDialog'];
 
-	function lesBucket(lesLessonSrv, bucketConfiguration) {
+	function lesBucket(lesLessonSrv, bucketConfiguration, $mdDialog) {
 		return {
 			restrict: 'EA',
 			scope: {
@@ -19,6 +19,18 @@
 						loadPrivateLessons();
 					}
 				});
+				scope.addLesson = function() {
+					$mdDialog.show({
+						controller: 'addLessonDialogCtrl',
+						controllerAs: 'vm',
+						templateUrl: 'app/les-bucket/add-lesson-dialog.tpl.html',
+						parent: angular.element(document.body),
+						clickOutsideToClose: true,
+						locals: {
+							bucket: scope.bucket
+						}
+					})
+				};
 				scope.offset = 0;
 				scope.privateLessons = [];
 				function loadPrivateLessons() {

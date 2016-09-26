@@ -8,7 +8,8 @@
 	function lesBucketSrv($http, $q, appConfiguration) {
 		return {
 			getBuckets: getBuckets,
-			getBucketsMock: getBucketsMock
+			getBucketsMock: getBucketsMock,
+			addLesson: addLesson
 		};
 
 		function getBuckets() {
@@ -38,6 +39,10 @@
 				}
 			]);
 			return defer.promise;
+		}
+
+		function addLesson(name, price) {
+			return $http.post(appConfiguration.serverUrl + '/addlesson');
 		}
 	}
 })();
