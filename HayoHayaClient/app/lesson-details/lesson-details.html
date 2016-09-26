@@ -1,6 +1,17 @@
-<div ng-controller="lessonDetailsController as vm">
+<div ng-controller="lessonDetailsController as vm" >
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Create Lesson!</h2>
+        </div>
+    </md-toolbar>
 
-    <form sf-schema="vm.schema" sf-form="vm.form" sf-model="vm.lesson" ng-submit="vm.postLesson()"></form>
+    <div>
+        <p>
+        <form sf-schema="vm.schema" sf-form="vm.form" sf-model="vm.lesson" ng-submit="vm.postLesson()"></form>
+        </p>
+    </div>
+    <h1></h1>
+
 </div>
 
 <!--<form class="col-lg-6" ng-submit="vm.postLesson()">-->
