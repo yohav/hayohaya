@@ -20,4 +20,24 @@ var LessonSchema=new Schema({
 
 var Lesson=mongoose.model('Lesson',LessonSchema);
 
+ Lesson.EnrichLessons=function(lessons){
+    for(i in lessons){
+        AddUserDetails(lessons[i]);
+    }
+}
+
+ Lesson.AddUserDetails=function(lesson){
+    User.findById(id,function(err,user){
+        if(err)
+        {
+            return false;
+        }
+        lesson.userDetails={
+            name:user.name,
+            picture:user.profile
+        };
+    });
+}
+
+
 module.exports=Lesson;

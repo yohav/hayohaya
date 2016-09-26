@@ -5,7 +5,7 @@ var express = require('express');
 var router = express.Router();
 var models=require('../models');
 var Category=models.Category;
-
+var Lesson=model.Lesson;
 router.get('/', function(req, res, next) {
     Category.find()
         .then(function(doc){
@@ -18,14 +18,18 @@ router.get('/getLessons/:id/:offset/:length', function(req, res, next) {
     var params=req.params;
     var id=params.id;
     var offset=params.offset;
-    var length=params.length
+    var length=params.length;
     Category.findById(id,function(err,category){
         if(err)
         {
             res.send({error:"500"}).statusCode(500);
         }
         var lessons=category.lessons.splice(offset,length);
-        res.send(lessons);
+        Lesson.find({'_id': { $in: lessons } },
+            function(err, docs){
+                Lesson.EnrichLessons(docs);
+                res.send(docs);
+            });
     });
 });
 
