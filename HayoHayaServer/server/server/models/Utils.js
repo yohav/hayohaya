@@ -2,27 +2,15 @@
  * Created by lenovo on 9/26/2016.
  */
 
-function AddUserDetails(lesson,User){
-    User.findById(lesson.publisher,function(err,user){
-        if(err)
-        {
-            return false;
-        }
-        lesson.userDetails={
-            name:user.name,
-            picture:user.profile
-        };
-    });
-}
-
-function EnrichLessons(lessons,User){
-    for(i in lessons){
-        AddUserDetails(lessons[i]._doc, User);
+function CleanUsers(users){
+    for(i in users){
+        var user=users[i]._doc;
+        delete  user.takenLessons;
+        delete  user.publishedLessons;
     }
 }
 
 module.exports={
-    AddUserDetails:AddUserDetails,
-    EnrichLessons:EnrichLessons
+    CleanUsers:CleanUsers
 };
 

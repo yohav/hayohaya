@@ -6,7 +6,17 @@ var Lesson =models.Lesson;
 
 /* GET users listing. */
 router.get('/', function (req, res) {
-    res.send('respond with a resource');
+    User.find()
+        .exec(function(err,doc){
+            res.send(doc);
+        });
+});
+
+router.post('/', function(req, res, next) {
+    console.log(req.body);
+    var data=new User(req.body);
+    data.save();
+    res.send("success");
 });
 
 router.post('/takeLesson', function (req, res,next) {
@@ -49,14 +59,7 @@ function PointsTransaction(from,to,amount){
     return true;
 }
 
-router.get('/users/', function (req, res, next) {
-    User.find()
-        .then(function(doc){
-            res.send(doc);
-        });
-});
-
-router.get('/users:id', function (req, res, next) {
+router.get('/:id', function (req, res, next) {
     var id = req.params.id;
     User.findById(id, function (err, data) {
         if (err) {
@@ -66,13 +69,24 @@ router.get('/users:id', function (req, res, next) {
     })
 });
 
-function PointsTransaction(from,to,amount){
-    if(from.points<amount){
-        return false;
-    }
-    from.points=from.points-amount;;
-    to.points=to.points+amount;
-    return true;
-}
+router.get('/rank/:id', function (req, res, next) {
+    var id = req.params.id;
+    var details = req.body;
+    User.findById(id, function (err, user) {
+        res.send((user.rank.reduce(function(a, b) { return a + b; }, 0)) / user.rank.length);
+    })
+});
+
+router.post('/rank/:id', function (req, res, next) {
+    var id = req.params.id;
+    var details = req.body;
+    User.findById(id, function (err, user) {
+        user.rank.push(details.rank);
+        user.save();
+        res.send((user.rank.reduce(function(a, b) { return a + b; }, 0)) / user.rank.length);
+    })
+});
+
+
 
 module.exports = router;
