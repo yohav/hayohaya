@@ -10,7 +10,7 @@ var Schema=mongoose.Schema;
 
 var CategorySchema=new Schema({
     name:String,
-    lessons:Array
+    lessons:{type: [Schema.Types.ObjectId], ref: 'Lesson' }
 },{ collection:'categories'});
 
 var Category=mongoose.model('Category',CategorySchema);

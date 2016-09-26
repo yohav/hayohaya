@@ -17,8 +17,8 @@ var UserSchema=new Schema({
     profession : String,
     profile : String,
     points : Number,
-    takenLessons:Array,
-    publishedLessons:Array
+    takenLessons:{type: [Schema.Types.ObjectId], ref: 'Lesson' },
+    publishedLessons:{type: [Schema.Types.ObjectId], ref: 'Lesson' }
 },{ collection:'user_collection'});
 
 var User=mongoose.model('User',UserSchema);

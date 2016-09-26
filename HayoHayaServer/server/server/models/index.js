@@ -4,5 +4,6 @@
 module.exports={
     Lesson:require('./Lesson'),
     User:require('./User'),
-    Category:require('./Category')
+    Category:require('./Category'),
+    Utils:require('./Utils')
 };
