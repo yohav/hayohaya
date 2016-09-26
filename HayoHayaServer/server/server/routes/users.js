@@ -79,8 +79,7 @@ console.log("id: " + id);
     User.findById(id, function (err, user) {
 var returnedSum = calculateRank(user.rank);
 console.log("returned: " + returnedSum);
-        res.body = returnedSum;
-        res.send();
+        res.send(returnedSum;);
     })
 });
 
@@ -103,7 +102,7 @@ console.log("rank: " + rank);
     var sum = rank.reduce(function (a, b) {
         return a+b;
     }, 0);
-console.log("calculated :" + sum);
+console.log("calculated: " + sum);
     return (sum / rank.length);
 };
 
