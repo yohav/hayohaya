@@ -1,17 +1,17 @@
 <md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch>
-    <md-card-title>
+    <md-card-title layout-align="end">
         <md-card-title-text>
-            <span class="md-headline">Card with image</span>
-            <span class="md-subhead">Small</span>
+            <span class="md-headline">{{vm.privateLesson.name || 'Subject'}}</span>
+            <div>
+                <span class="md-subhead">{{vm.privateLesson.description || 'Description'}}</span>
+                <span class="md-subhead">{{vm.privateLesson.hours || 'Hours'}}</span>
+            </div>
         </md-card-title-text>
         <md-card-title-media>
-            <div class="md-media-sm card-media" aria-label="Insert Drive" md-direction="חח"></div>
-            <md-tooltip md-visible="demo.showTooltip" md-direction="{{demo.tipDirection}}">
-                Insert Drive
-            </md-tooltip>
+            <div class="md-media-sm card-media"></div>
         </md-card-title-media>
     </md-card-title>
-    <md-card-actions layout="row" layout-align="end center">
-        <md-button id="register-to-lesson">Action 1</md-button>
+    <md-card-actions layout="row" layout-align="start center">
+        <md-button id="register-to-lesson">Register</md-button>
     </md-card-actions>
 </md-card>
