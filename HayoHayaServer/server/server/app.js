@@ -12,7 +12,7 @@ var categories=require('./routes/categories');
 
 var app = express();
 
-mongoose.connect("https://hayohaya.documents.azure.com:443/local");
+mongoose.connect("mongodb://hayohaya.documents.azure.com:443/local");
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
