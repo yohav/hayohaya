@@ -6,7 +6,17 @@ var Lesson =models.Lesson;
 
 /* GET users listing. */
 router.get('/', function (req, res) {
-    res.send('respond with a resource');
+    User.find()
+        .exec(function(err,doc){
+            res.send(doc);
+        });
+});
+
+router.post('/', function(req, res, next) {
+    console.log(req.body);
+    var data=new User(req.body);
+    data.save();
+    res.send("success");
 });
 
 router.post('/takeLesson', function (req, res,next) {
