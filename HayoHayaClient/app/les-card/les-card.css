@@ -7,3 +7,14 @@
 .card-metadata {
     display: block;
 }
+
+.md-media-sm.card-media {
+    float: right;
+    margin-left: 15px;
+}
+
+.transparent {
+    background: grey;
+    display: flex;
+    flex-flow: column;
+}

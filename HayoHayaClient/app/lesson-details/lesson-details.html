@@ -1,10 +1,6 @@
 <div ng-controller="lessonDetailsController as vm">
 
-    <form class="col-lg-6" sf-schema="vm.schema" sf-form="vm.form" sf-model="vm.lesson" ng-submit="vm.postLesson()"></form>
-
-    <div class="col-lg-2">
-        <img ng-src="{{vm.lesson.theme}}" class="md-card-image" alt="Washed Out">
-    </div>
+    <form sf-schema="vm.schema" sf-form="vm.form" sf-model="vm.lesson" ng-submit="vm.postLesson()"></form>
 </div>
 
 <!--<form class="col-lg-6" ng-submit="vm.postLesson()">-->

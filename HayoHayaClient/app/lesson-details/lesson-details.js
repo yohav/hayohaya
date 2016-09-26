@@ -1,31 +1,37 @@
 /**
  * Created by lenovo on 9/26/2016.
  */
-app.controller('lessonDetailsController',LessonDetailsController)
+(function() {
+    angular
+        .module('app').controller('lessonDetailsController', LessonDetailsController)
 
-LessonDetailsController.$inject=['lessonDetailsService'];
+    LessonDetailsController.$inject = ['lessonDetailsService','userService'];
 
-function LessonDetailsController(lessonDetailsService){
-    var vm=this;
-    vm.lesson={};
-    vm.schema={};
-    vm.form = [
-        "*",
-        {
-            type: "submit",
-            title: "Save"
+    function LessonDetailsController(lessonDetailsService,userService) {
+        var vm = this;
+        vm.lesson = {};
+        vm.schema = {};
+        vm.form = [
+            "*",
+            {
+                type: "submit",
+                title: "Save"
+            }
+        ];
+        function init() {
+            console.log('LessonDetailsController')
+            userService.getUser().then(function(response){
+                vm.lesson.teacher=userService.getUser();
+            });
+            lessonDetailsService.lessonSchema().then(function (response) {
+                vm.schema = response;
+            });
         }
-    ];
-    function init(){
-        console.log('LessonDetailsController')
-        vm.lesson.theme="http://www.scarymommy.com/wp-content/uploads/2014/10/homework-sucks.jpg";
-        lessonDetailsService.lessonSchema().then(function(response){
-           vm.schema=response;
-        });
-    }
-    init();
 
-    vm.postLesson=()=>{
-      lessonDetailsService.postLesson(vm.lesson);
-    };
-}
+        init();
+
+        vm.postLesson = ()=> {
+            lessonDetailsService.postLesson(vm.lesson);
+        };
+    }
+})();

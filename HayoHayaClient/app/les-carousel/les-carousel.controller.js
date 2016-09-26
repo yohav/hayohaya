@@ -3,9 +3,9 @@
 		.module('app')
 		.controller('lesCarouselCtrl', lesCarouselCtrl);
 
-	lesCarouselCtrl.$inject = [];
+	lesCarouselCtrl.$inject = ['$mdDialog'];
 
-	function lesCarouselCtrl() {
+	function lesCarouselCtrl($mdDialog) {
 		var vm = this;
 		vm.buckets = [
 			{
@@ -15,5 +15,21 @@
 				id: 'English'
 			}
 		];
+
+		vm.createLesson=(ev)=>{
+			$mdDialog.show({
+				controller: 'lessonDetailsController',
+				templateUrl: 'app/lesson-details/lesson-details.html',
+				parent: angular.element(document.body),
+				targetEvent: ev,
+				clickOutsideToClose:true,
+				fullscreen: false // Only for -xs, -sm breakpoints.
+			})
+				.then(function(answer) {
+					vm.status = 'You said the information was "' + answer + '".';
+				}, function() {
+					vm.status = 'You cancelled the dialog.';
+				});
+		};
 	}
 })();

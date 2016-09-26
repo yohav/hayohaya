@@ -3,10 +3,12 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="app/les-bucket/bucket.css">
     <link rel="stylesheet" href="app/les-card/les-card.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
     <div ui-view></div>
@@ -22,7 +24,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.8/angular-sanitize.min.js"></script>
     <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
 
+<!-- app -->
+<script src="app/app.js"></script>
+<script src="app/app.config.js"></script>
+<!-- les-carousel -->
+<script src="app/les-carousel/les-carousel.controller.js"></script>
+<!-- les-bucket -->
+<script src="app/les-bucket/les-bucket.config.js"></script>
+<script src="app/les-bucket/les-bucket.directive.js"></script>
+<script src="app/les-bucket/les-bucket.service.js"></script>
+<!-- les-card -->
+<script src="app/les-card/les-card.directive.js"></script>
+<script src="app/les-card/les-card_register.service.js"></script>
+<script src="app/star-rating/star-rating.js"></script>
+    <script src="lib/objectpath-master/lib/ObjectPath.js"></script>
+    <script src="lib/tv4-master/tv4.js"></script>
+    <script src="lib/angular-schema-form-development/dist/schema-form.js"></script>
+    <script src="lib/angular-schema-form-bootstrap-develop/bootstrap-decorator.js"></script>
+
     <!-- app -->
+
     <script src="app/app.js"></script>
     <script src="app/app.config.js"></script>
     <!-- les-carousel -->
@@ -34,5 +55,8 @@
     <!-- les-card -->
     <script src="app/les-card/les-card.directive.js"></script>
     <script src="app/les-card/les-card_register.service.js"></script>
+    <script src="app/lesson-details/lesson-details.service.js"></script>
+    <script src="app/lesson-details/lesson-details.js"></script>
+    <script src="app/navbar/user.service.js"></script>
 </body>
 </html>

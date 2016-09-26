@@ -2,6 +2,6 @@
 	angular
 		.module('app')
 		.constant('appConfiguration', {
-			serverUrl: "http://localhost:3000"
+			serverUrl: "http://hayohaya-prod.westeurope.cloudapp.azure.com:3000/"
 		});
 })();
