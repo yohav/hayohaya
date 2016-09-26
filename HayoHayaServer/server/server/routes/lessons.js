@@ -3,19 +3,20 @@ var router = express.Router();
 var models=require('../models');
 var Lesson=models.Lesson;
 var User=models.User;
+
 router.get('/', function(req, res, next) {
     Lesson.find()
-        .then(function(doc){
-            Lesson.EnrichLessons(doc);
+        .populate('publisher')
+        .exec(function(err,doc){
             res.send(doc);
         });
 });
 
 router.post('/lessons/', function(req, res, next) {
     var heroes=req.body;
-    Lesson.find({'_id': { $in: heroes } },
-        function(err, docs){
-            Lesson.EnrichLessons(doc);
+    Lesson.find({'_id': { $in: heroes } })
+        .populate('publisher')
+    .exec(function(err, docs){
             res.send(docs);
         });
 });
@@ -49,8 +50,9 @@ router.delete('/:id', function(req, res, next) {
 router.get('/?name=:name', function(req, res, next) {
     var name = req.params.name;
     Lesson.find({'name':'/'+name+'/i'})
-    .then(function(doc){
-            Lesson.AddUserDetails(doc);
+        .populate('publisher')
+        .exec(function(err,doc){
+            Utils.AddUserDetails(doc,User);
         res.send(doc);
     });
 });
