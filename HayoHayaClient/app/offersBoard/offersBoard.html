@@ -1,0 +1,17 @@
+<div ng-controller="offersBoardController as vm">
+    <md-card style="padding-bottom: 10px" class="col-lg-4">
+        <h3>Get Your Lesson Today!</h3>
+       <div ng-repeat="offer in vm.offers" class="inline">
+           <offer-card></offer-card>
+
+       </div>
+
+
+        <!--<jk-carousel-->
+                <!--data="vm.offers"-->
+                <!--item-template-url="app/offersBoard/offer-card/offer-card.html"-->
+                <!--max-width="800"-->
+                <!--max-height="500" >-->
+        <!--</jk-carousel>-->
+    </md-card>
+</div>
