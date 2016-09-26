@@ -28,8 +28,9 @@ router.get('/getLessons/:id/:offset/:length', function(req, res, next) {
         }
         var lessons=category.lessons.splice(offset,length);
         Lesson.find({'_id': { $in: lessons } })
-        .populate('publisher')
+        .populate('teacher')
         .exec(function(err, docs){
+                Utils.CleanUsers(docs);
                 res.send(docs);
             });
     });

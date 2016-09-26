@@ -13,9 +13,7 @@ var Schema=mongoose.Schema;
 
 var UserSchema=new Schema({
     name : String,
-    password : String,
-    profession : String,
-    profile : String,
+    picture : String,
     points : Number,
     takenLessons:{type: [Schema.Types.ObjectId], ref: 'Lesson' },
     publishedLessons:{type: [Schema.Types.ObjectId], ref: 'Lesson' }

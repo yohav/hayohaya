@@ -11,9 +11,9 @@ var Schema=mongoose.Schema;
 var LessonSchema=new Schema({
     category:String,
     name:String,
-    publisher:{type: Schema.Types.ObjectId, ref: 'User' },
+    teacher:{type: Schema.Types.ObjectId, ref: 'User' },
     description:String,
-    pointsForCompletion:Number,
+    price:Number,
     hours:Number
 },{ collection:'lessons'});
 
