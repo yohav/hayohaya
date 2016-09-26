@@ -8,7 +8,8 @@
 	function lesBucketSrv($http, $q, appConfiguration) {
 		return {
 			getBuckets: getBuckets,
-			getBucketsMock: getBucketsMock
+			getBucketsMock: getBucketsMock,
+			addLesson: addLesson
 		};
 
 		function getBuckets() {
@@ -25,19 +26,23 @@
 					id: 'English'
 				},
 				{
-					id: 'AAA'
+					id: 'Geographical'
 				},
 				{
-					id: 'BBB'
+					id: 'Politics'
 				},
 				{
-					id: 'CCC'
+					id: 'Computer'
 				},
 				{
 					id: 'Literature'
 				}
 			]);
 			return defer.promise;
+		}
+
+		function addLesson(name, price) {
+			return $http.post(appConfiguration.serverUrl + '/addlesson');
 		}
 	}
 })();

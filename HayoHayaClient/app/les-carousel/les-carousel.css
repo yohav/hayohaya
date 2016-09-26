@@ -4,7 +4,6 @@
 .carousel-content {
 	overflow-x: hidden;
 	white-space: nowrap;
-	display: table;
 }
 
 .carousel-button {

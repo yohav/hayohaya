@@ -1,4 +1,6 @@
 <div class="bucket" >
+	<span class="add-label">Add Lesson<span/>
+	<img class="add" ng-click="addLesson()" src="assets/img/add.svg"/>
 	<div ng-repeat="privateLesson in privateLessons">
 		<les-card private-lesson="privateLesson"></les-card>
 	</div>

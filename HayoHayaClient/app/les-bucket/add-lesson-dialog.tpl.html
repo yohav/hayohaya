@@ -1,0 +1,39 @@
+<md-dialog aria-label="Add lesson">
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Add lesson</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="vm.cancel()">
+                <md-icon md-svg-src="assets/img/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content ng-cloak>
+        <div class="md-dialog-content">
+            <form ng-submit="$event.preventDefault()" name="addForm">
+                <md-input-container flex>
+                    <label>Subject</label>
+                    <input type="text"/>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Price</label>
+                    <input name="price" ng-model="price" placeholder="20"
+                           required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+                    <div ng-messages="addForm.price.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">You must supply a price.</div>
+                        <div ng-message="pattern" class="my-message">That doesn't look like a valid price.</div>
+                        <div ng-message="md-maxlength" class="my-message">
+                            Maximum 5 digits!
+                        </div>
+                    </div>
+                </md-input-container>
+            </form>
+        </div>
+    </md-dialog-content>
+
+    <md-dialog-actions>
+        <md-button aria-label="Finished" ng-click="vm.finish($event)">Add</md-button>
+    </md-dialog-actions>
+</md-dialog>
