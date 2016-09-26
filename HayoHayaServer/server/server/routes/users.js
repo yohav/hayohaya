@@ -40,6 +40,15 @@ router.post('/takeLesson', function (req, res,next) {
     res.send("added lesson to user");
 });
 
+function PointsTransaction(from,to,amount){
+    if(from.points<amount){
+        return false;
+    }
+    from.points=from.points-amount;;
+    to.points=to.points+amount;
+    return true;
+}
+
 router.get('/users/', function (req, res, next) {
     User.find()
         .then(function(doc){

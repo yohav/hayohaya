@@ -4,65 +4,31 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min.css">
-    <link rel="stylesheet" href="node_modules/angular-jk-carousel/dist/jk-carousel.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
-
-
+    <link rel="stylesheet" href="app/les-bucket/bucket.css">
+    <link rel="stylesheet" href="app/les-card/les-card.css">
 </head>
 <body>
-<h1>NEW CLIENT</h1>
-<h2>TO BE CONTINUED</h2>
-<!--<nav class="navbar navbar-inverse" ng-controller="navbarController as vm">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">
-                <img class="logo" alt="Brand" src="http://www.whereleb.com/img/placespictures/734/73476/full/73476_1.jpg">
-            </a>
-        </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li> <md-button ui-sref="offersBoard" class="md-primary">Offers Board</md-button></li>
-                <li><md-button ui-sref="leaderboards" class="md-primary">Leaderboards</md-button></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><img ng-src="{{vm.user.picture}}" class="img-circle logo"></a></li>
-            </ul>
-        </div>
+    <div ui-view></div>
+    <!-- libs -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.8/angular-sanitize.min.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
 
-    </div>
-</nav>
-
-<div class="row">
-    <div class="col-lg-2" class="default-style">
-        <user-options ></user-options>
-    </div>
-    <div class="col-lg-10" ui-view></div>
-</div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.8/angular-sanitize.min.js"></script>
-
-<script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
-<script src="node_modules/angular-jk-carousel/dist/jk-carousel.min.js"></script>
-<script src="lib/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
-<script src="lib/objectpath-master/lib/ObjectPath.js"></script>
-<script src="lib/tv4-master/tv4.js"></script>
-<script src="lib/angular-schema-form-development/dist/schema-form.js"></script>
-<script src="lib/angular-schema-form-bootstrap-develop/bootstrap-decorator.js"></script>
-
-
-<script src="app/app.js"></script>-->
-<!--<script src="app/offersBoard/offersBoardController.js"></script>-->
-<!--<script src="app/offersBoard/offersBoardService.js"></script>-->
-<!--<script src="app/offersBoard/offer-card/offerCardDirective.js"></script>-->
-<!--<script src="app/user-options/user-options.js"></script>-->
-<!--<script src="app/lesson-details/lesson-details.js"></script>-->
-<!--<script src="app/lesson-details/lesson-details.service.js"></script>-->
-<!--<script src="app/navbar/navbarController.js"></script>-->
-<!--<script src="app/navbar/user.service.js"></script>-->
+    <!-- app -->
+    <script src="app/app.js"></script>
+    <script src="app/app.config.js"></script>
+    <!-- les-carousel -->
+    <script src="app/les-carousel/les-carousel.controller.js"></script>
+    <!-- les-bucket -->
+    <script src="app/les-bucket/les-bucket.config.js"></script>
+    <script src="app/les-bucket/les-bucket.directive.js"></script>
+    <script src="app/les-bucket/les-bucket.service.js"></script>
 </body>
 </html>
