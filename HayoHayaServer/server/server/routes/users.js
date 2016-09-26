@@ -31,13 +31,13 @@ router.post('/takeLesson', function (req, res,next) {
             {
                 res.send({error:"500"}).statusCode(500);
             }
-            User.findById(lesson.publisher,function(err,publisher){
+            User.findById(lesson.teacher,function(err,teacher){
                 if(err)
                 {
                     res.send({error:"500"}).statusCode(500);
                 }
 
-                if(!PointsTransaction(user,publisher,lesson.pointsForCompletion)){
+                if(!PointsTransaction(user,teacher,lesson.price)){
                     res.send("error: doesn't have enough points");
                 }
                 user.takenLessons.push(details.lessonId);
@@ -59,13 +59,6 @@ function PointsTransaction(from,to,amount){
     return true;
 }
 
-router.get('/users/', function (req, res, next) {
-    User.find()
-        .then(function(doc){
-            res.send(doc);
-        });
-});
-
 router.get('/:id', function (req, res, next) {
     var id = req.params.id;
     User.findById(id, function (err, data) {
@@ -76,13 +69,24 @@ router.get('/:id', function (req, res, next) {
     })
 });
 
-function PointsTransaction(from,to,amount){
-    if(from.points<amount){
-        return false;
-    }
-    from.points=from.points-amount;;
-    to.points=to.points+amount;
-    return true;
-}
+router.get('/rank/:id', function (req, res, next) {
+    var id = req.params.id;
+    var details = req.body;
+    User.findById(id, function (err, user) {
+        res.send((user.rank.reduce(function(a, b) { return a + b; }, 0)) / user.rank.length);
+    })
+});
+
+router.post('/rank/:id', function (req, res, next) {
+    var id = req.params.id;
+    var details = req.body;
+    User.findById(id, function (err, user) {
+        user.rank.push(details.rank);
+        user.save();
+        res.send((user.rank.reduce(function(a, b) { return a + b; }, 0)) / user.rank.length);
+    })
+});
+
+
 
 module.exports = router;

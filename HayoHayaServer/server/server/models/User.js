@@ -15,6 +15,7 @@ var UserSchema=new Schema({
     name : String,
     picture : String,
     points : Number,
+    rank : {type: [Number]},
     takenLessons:{type: [Schema.Types.ObjectId], ref: 'Lesson' },
     publishedLessons:{type: [Schema.Types.ObjectId], ref: 'Lesson' }
 },{ collection:'user_collection'});
