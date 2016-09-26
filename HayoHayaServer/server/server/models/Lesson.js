@@ -9,6 +9,7 @@ mongoose.Promise = global.Promise;
 var Schema=mongoose.Schema;
 
 var LessonSchema=new Schema({
+    category:String,
     name:String,
     publisher:String,
     description:String,

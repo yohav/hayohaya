@@ -20,6 +20,10 @@ function LessonDetailsService($http,$q,serverUrl){
             "type": "object",
             "title": "Lesson",
             "properties": {
+                "category": {
+                    "title": "Category",
+                    "type": "string"
+                },
                 "name": {
                     "title": "Name",
                     "type": "string"
@@ -43,14 +47,6 @@ function LessonDetailsService($http,$q,serverUrl){
                 "theme": {
                     "title": "Theme",
                     "type": "string"
-                },
-                "questions": {
-                    "title": "Questions",
-                    "type": "array",
-                    "items": {
-                        "title": "Question",
-                        "type": "string"
-                    }
                 }
 //          }
             }
