@@ -89,7 +89,10 @@ router.post('/rank/:id', function (req, res, next) {
     })
 });
 
-var calculateRank = function(rank) {
+var calculateRank = function (rank) {
+    if (rank.length == 0) {
+        return 0;
+    }
     var sum = rank.reduce(function (a, b) {
         return a+b;
     }, 0);
