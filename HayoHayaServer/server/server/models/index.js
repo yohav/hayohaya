@@ -3,5 +3,6 @@
  */
 module.exports={
     Lesson:require('./Lesson'),
-    User:require('./User')
+    User:require('./User'),
+    Category:require('./Category')
 };
