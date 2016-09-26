@@ -14,17 +14,17 @@ router.post('/takeLesson', function (req, res,next) {
     User.findById(details.userId,function(err,user){
         if(err)
         {
-            res.send({error:"500"});
+            res.send({error:"500"}).statusCode(500);
         }
         Lesson.findById(details.lessonId,function(err,lesson){
             if(err)
             {
-                res.send({error:"500"});
+                res.send({error:"500"}).statusCode(500);
             }
             User.findById(lesson.publisher,function(err,publisher){
                 if(err)
                 {
-                    res.send({error:"500"});
+                    res.send({error:"500"}).statusCode(500);
                 }
 
                 if(!PointsTransaction(user,publisher,lesson.pointsForCompletion)){

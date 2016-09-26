@@ -1,24 +1,25 @@
-angular
-	.module('app', [
-		'ngMaterial',
-		'ngAnimate',
-		'ui.router',
-		'jkAngularCarousel',
-		'schemaForm'])
-	.config(config);
+(function(){
+	angular
+		.module('app', [
+			'ngMaterial',
+			'ngAnimate',
+			'ui.router'])
+		.config(config);
 
-config.$inject = ['$stateProvider', '$urlRouterProvider'];
+	config.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-function config($stateProvider, $urlRouterProvider) {
-	$urlRouterProvider.otherwise('/');
-	$stateProvider
-	$stateProvider
-		.state('private_lessons',{
-			views: {
-				'private_lessons': {
-					templateUrl: 'private_lessons.html',
-					controller: '..'
-				}
-			}
-		})
-}
+	function config($stateProvider, $urlRouterProvider) {
+		$urlRouterProvider.otherwise('/private');
+		$stateProvider
+			.state('app', {
+				abstract: true,
+				templateUrl: 'app/partials/app.html'
+			})
+			.state('app.private_lessons', {
+				url: '/private',
+				templateUrl: 'app/partials/private_lessons.html',
+				controller: 'lesCarouselCtrl',
+				controllerAs: 'vm'
+			});
+	}
+})();

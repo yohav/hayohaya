@@ -5,7 +5,7 @@ var express = require('express');
 var router = express.Router();
 var models=require('../models');
 var Category=models.Category;
-
+var Lesson=models.Lesson;
 router.get('/', function(req, res, next) {
     Category.find()
         .then(function(doc){
@@ -14,16 +14,22 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.post('/getLessons', function(req, res, next) {
-    var offset=req.body;
-    var id=offset.id;
+router.get('/getLessons/:id/:offset/:length', function(req, res, next) {
+    var params=req.params;
+    var id=params.id;
+    var offset=params.offset;
+    var length=params.length;
     Category.findById(id,function(err,category){
         if(err)
         {
-            res.send({error:"500"});
+            res.send({error:"500"}).statusCode(500);
         }
-        var lessons=category.lessons.splice(offset.index,offset.amount);
-        res.send(lessons);
+        var lessons=category.lessons.splice(offset,length);
+        Lesson.find({'_id': { $in: lessons } },
+            function(err, docs){
+                Lesson.EnrichLessons(docs);
+                res.send(docs);
+            });
     });
 });
 
@@ -49,7 +55,7 @@ router.put('/:id', function(req, res, next) {
     Category.findById(id,function(err,doc){
         if(err)
         {
-            console.error('error');
+            res.send({error:"500"}).statusCode(500);
         }
         doc=body;
         doc.save();
