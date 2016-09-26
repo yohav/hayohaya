@@ -7,10 +7,24 @@ var models=require('../models');
 var Category=models.Category;
 
 router.get('/', function(req, res, next) {
-    Lesson.find()
+    Category.find()
         .then(function(doc){
             res.send(doc);
         });
+});
+
+
+router.post('/getLessons', function(req, res, next) {
+    var offset=req.body;
+    var id=offset.id;
+    Category.findById(id,function(err,category){
+        if(err)
+        {
+            res.send({error:"500"});
+        }
+        var lessons=category.lessons.splice(offset.index,offset.amount);
+        res.send(lessons);
+    });
 });
 
 router.post('/categories/', function(req, res, next) {

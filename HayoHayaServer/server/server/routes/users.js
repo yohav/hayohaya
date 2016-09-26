@@ -25,11 +25,10 @@ router.post('/takeLesson', function (req, res,next) {
                 {
                     res.send({error:"500"});
                 }
-                if(user.points<lesson.pointsForCompletion){
-                    res.send("error: user doesn't have enough points");
-                    return;
+
+                if(!PointsTransaction(user,publisher,lesson.pointsForCompletion)){
+                    res.send("error: doesn't have enough points");
                 }
-                PointsTransaction(user,publisher,lesson.pointsForCompletion);
                 user.takenLessons.push(details.lessonId);
                 user.save();
                 res.send({success:"transcation successful"});
@@ -41,8 +40,12 @@ router.post('/takeLesson', function (req, res,next) {
 });
 
 function PointsTransaction(from,to,amount){
+    if(from.points<amount){
+        return false;
+    }
     from.points=from.points-amount;;
     to.points=to.points+amount;
+    return true;
 }
 
 module.exports = router;
