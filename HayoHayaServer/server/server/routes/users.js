@@ -74,12 +74,10 @@ router.get('/:id', function (req, res, next) {
 
 router.get('/rank/:id', function (req, res, next) {
     var id = req.params.id;
-console.log("id: " + id);
     var details = req.body;
     User.findById(id, function (err, user) {
-var returnedSum = calculateRank(user.rank);
-console.log("returned: " + returnedSum);
-        res.send({returnedSum});
+var averageRank = calculateRank(user.rank);
+        res.send({averageRank});
     })
 });
 
@@ -89,20 +87,18 @@ router.post('/rank/:id', function (req, res, next) {
     User.findById(id, function (err, user) {
         user.rank.push(details.rank);
         user.save();
-        res.body = calculateRank(user.rank);
-        res.send();
+        var averageRank = calculateRank(user.rank);
+        res.send({averageRank});
     })
 });
 
 var calculateRank = function (rank) {
-console.log("rank: " + rank);
     if (rank.length == 0) {
         return 0;
     }
     var sum = rank.reduce(function (a, b) {
         return a+b;
     }, 0);
-console.log("calculated: " + sum);
     return (sum / rank.length);
 };
 
