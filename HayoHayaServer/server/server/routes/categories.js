@@ -14,15 +14,17 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.post('/getLessons', function(req, res, next) {
-    var offset=req.body;
-    var id=offset.id;
+router.get('/getLessons/:id/:offset/:length', function(req, res, next) {
+    var params=req.params;
+    var id=params.id;
+    var offset=params.offset;
+    var length=params.length
     Category.findById(id,function(err,category){
         if(err)
         {
-            res.send({error:"500"});
+            res.send({error:"500"}).statusCode(500);
         }
-        var lessons=category.lessons.splice(offset.index,offset.amount);
+        var lessons=category.lessons.splice(offset,length);
         res.send(lessons);
     });
 });
@@ -49,7 +51,7 @@ router.put('/:id', function(req, res, next) {
     Category.findById(id,function(err,doc){
         if(err)
         {
-            console.error('error');
+            res.send({error:"500"}).statusCode(500);
         }
         doc=body;
         doc.save();
