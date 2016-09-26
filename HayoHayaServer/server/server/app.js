@@ -13,6 +13,7 @@ var categories=require('./routes/categories');
 var app = express();
 ///localhost:27017/local
 mongoose.connect("mongodb://hayohaya:G7ewv1KqtiTl1HA4GG1mR5SSGxOShsXaXwQm7XX7k4ikXMNzFDg08PnrldeOBxstifSG164Jx8ou8cwmqHsuxw==@hayohaya.documents.azure.com:10250/?ssl=true");
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
