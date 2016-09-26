@@ -31,13 +31,13 @@ router.post('/takeLesson', function (req, res,next) {
             {
                 res.send({error:"500"}).statusCode(500);
             }
-            User.findById(lesson.publisher,function(err,publisher){
+            User.findById(lesson.teacher,function(err,teacher){
                 if(err)
                 {
                     res.send({error:"500"}).statusCode(500);
                 }
 
-                if(!PointsTransaction(user,publisher,lesson.pointsForCompletion)){
+                if(!PointsTransaction(user,teacher,lesson.price)){
                     res.send("error: doesn't have enough points");
                 }
                 user.takenLessons.push(details.lessonId);
@@ -73,7 +73,8 @@ router.get('/rank/:id', function (req, res, next) {
     var id = req.params.id;
     var details = req.body;
     User.findById(id, function (err, user) {
-        res.send((user.rank.reduce(function(a, b) { return a + b; }, 0)) / user.rank.length);
+        res.body = calculateRank(user.rank);
+        res.send();
     })
 });
 
@@ -83,9 +84,17 @@ router.post('/rank/:id', function (req, res, next) {
     User.findById(id, function (err, user) {
         user.rank.push(details.rank);
         user.save();
-        res.send((user.rank.reduce(function(a, b) { return a + b; }, 0)) / user.rank.length);
+        res.body = calculateRank(user.rank);
+        res.send();
     })
 });
+
+var calculateRank = function(rank) {
+    var sum = rank.reduce(function (a, b) {
+        return a+b;
+    }, 0);
+    return sum / rank.length;
+};
 
 
 

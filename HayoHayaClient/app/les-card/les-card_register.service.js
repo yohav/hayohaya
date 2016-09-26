@@ -15,7 +15,7 @@
         };
 
         function registerToLesson(userId, lessonId) {
-            var url = serverUrl + '/takeLesson';
+            var url = serverUrl.serverUrl + 'users/takeLesson';
             var data =
             {
                 userId: userId,
