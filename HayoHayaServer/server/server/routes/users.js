@@ -66,7 +66,7 @@ router.get('/users/', function (req, res, next) {
         });
 });
 
-router.get('/users:id', function (req, res, next) {
+router.get('/:id', function (req, res, next) {
     var id = req.params.id;
     User.findById(id, function (err, data) {
         if (err) {
