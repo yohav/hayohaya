@@ -1,0 +1,8 @@
+<component name="libraryTable">
+  <library name="Angualrjs" type="javaScript">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/HayoHayaClient/lib/angular-1.5.8/angular.min.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
