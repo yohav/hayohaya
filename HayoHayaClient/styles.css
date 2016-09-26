@@ -1,13 +1,9 @@
-.inline{
-    display: inline-block;
+html, body {
+    height: 100%;
 }
 
-.logo{
-    width: 50px;
-    height: 50px;
+[ui-view] {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
-
-.default-style{
-    background-color: blue;
-}
-

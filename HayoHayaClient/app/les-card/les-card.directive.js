@@ -16,9 +16,9 @@
                 privateLesson: '='
             },
             templateUrl: 'app/les-card/les-card.tpl.html',
-            link: function (scope, elem, attrs) {
-                var registerButton = angular.element(elem.querySelector('#register-to-lesson'));
-                registerButton.on('click', function () {
+            link: function (scope, element, attrs) {
+                var registerButton = $(element).find('#register-to-lesson');
+                registerButton.click(function () {
                     alert('123');
                 });
             }

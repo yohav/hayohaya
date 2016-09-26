@@ -7,25 +7,36 @@
 
 	function lesBucketSrv($http, $q, appConfiguration) {
 		return {
-			getPrivateLessons: getPrivateLessons,
-			getPrivateLessonsMocks: getPrivateLessonsMocks
+			getBuckets: getBuckets,
+			getBucketsMock: getBucketsMock
 		};
 
-		function getPrivateLessons(bucketId, offset, length) {
-			return $http.get(appConfiguration.serverUrl + '/categories/getlessons', {
-				params: {
-					id: bucketId,
-					offset: offset,
-					length: length
-				}
-			});
+		function getBuckets() {
+			return $http.get(appConfiguration.serverUrl + '/categories');
 		}
 
-		function getPrivateLessonsMocks(bucketId, offset, length) {
+		function getBucketsMock() {
 			var defer = $q.defer();
-			defer.resolve([{
-				id: 'math'
-			}]);
+			defer.resolve([
+				{
+					id: 'Math'
+				},
+				{
+					id: 'English'
+				},
+				{
+					id: 'AAA'
+				},
+				{
+					id: 'BBB'
+				},
+				{
+					id: 'CCC'
+				},
+				{
+					id: 'Literature'
+				}
+			]);
 			return defer.promise;
 		}
 	}

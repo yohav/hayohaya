@@ -1,0 +1,22 @@
+.carousel {
+}
+
+.carousel-content {
+	overflow-x: hidden;
+	white-space: nowrap;
+	display: table;
+}
+
+.carousel-button {
+	position: absolute;
+	top: 50%;
+	width: 2%;
+}
+
+.right {
+	right: 0;
+}
+
+.left {
+	left: 0;
+}

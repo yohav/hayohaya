@@ -1,10 +1,10 @@
 <md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch>
     <md-card-title layout-align="end">
         <md-card-title-text>
-            <span class="md-headline">{{vm.privateLesson.name || 'Subject'}}</span>
+            <span class="md-headline">{{privateLesson.name || 'Subject'}}</span>
             <div>
-                <span class="md-subhead">{{vm.privateLesson.description || 'Description'}}</span>
-                <span class="md-subhead">{{vm.privateLesson.hours || 'Hours'}}</span>
+                <span class="md-subhead">{{privateLesson.description || 'Description'}}</span>
+                <span class="md-subhead">{{privateLesson.hours || 'Hours'}}</span>
             </div>
         </md-card-title-text>
         <md-card-title-media>
