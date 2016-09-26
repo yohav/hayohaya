@@ -19,6 +19,7 @@
 		vm.createLesson=(ev)=>{
 			$mdDialog.show({
 				controller: 'lessonDetailsController',
+				controllerAs:'vm',
 				templateUrl: 'app/lesson-details/lesson-details.html',
 				parent: angular.element(document.body),
 				targetEvent: ev,

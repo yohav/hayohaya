@@ -10,8 +10,8 @@
     function LessonDetailsService($http, $q) {
 
         this.postLesson = (lesson)=> {
-            $http.post(`http://hayohaya-prod.westeurope.cloudapp.azure.com:3000/lessons`, lesson).then(function (response) {
-                console.log(response);
+            return $http.post(`http://hayohaya-prod.westeurope.cloudapp.azure.com:3000/lessons`, lesson).then(function (response) {
+                return response;
             });
         };
 

@@ -5,9 +5,9 @@
     angular
         .module('app').controller('lessonDetailsController', LessonDetailsController)
 
-    LessonDetailsController.$inject = ['lessonDetailsService','userService'];
+    LessonDetailsController.$inject = ['lessonDetailsService','userService','$mdDialog'];
 
-    function LessonDetailsController(lessonDetailsService,userService) {
+    function LessonDetailsController(lessonDetailsService,userService,$mdDialog) {
         var vm = this;
         vm.lesson = {};
         vm.schema = {};
@@ -31,7 +31,8 @@
         init();
 
         vm.postLesson = ()=> {
-            lessonDetailsService.postLesson(vm.lesson);
+            var response=lessonDetailsService.postLesson(vm.lesson);
+            $mdDialog.hide(response);
         };
     }
 })();
