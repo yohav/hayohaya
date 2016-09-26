@@ -1,17 +1,23 @@
 <md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch>
     <md-card-title layout-align="end">
         <md-card-title-text>
-            <span class="md-headline">{{vm.privateLesson.name || 'Subject'}}</span>
+            <span class="md-headline" ng-model="modelName">{{privateLesson.name}}</span>
             <div>
-                <span class="md-subhead">{{vm.privateLesson.description || 'Description'}}</span>
-                <span class="md-subhead">{{vm.privateLesson.hours || 'Hours'}}</span>
+                <span class="md-subhead card-metadata">{{privateLesson.description}}</span>
+                <span class="md-subhead card-metadata">Hours : {{privateLesson.hours}}</span>
             </div>
         </md-card-title-text>
-        <md-card-title-media>
+        <md-card-title-media class="card-title-media" ng-mouseenter="showStars = true"
+                             ng-mouseleave="showStars = false">
             <div class="md-media-sm card-media"></div>
+            <!--                        <md-tooltip md-direction="left">
+                                        {{privateLesson.publisher.name}}
+                                        <star-rating stars="5" outer-star-selection="stars" outer-percent="rating" rating-percent="50" star></star-rating>
+                                    </md-tooltip>-->
+            <star-rating class="transparent" ng-show="showStars" rating="{count:345, value: 2.9}"></star-rating>
         </md-card-title-media>
     </md-card-title>
     <md-card-actions layout="row" layout-align="start center">
-        <md-button id="register-to-lesson">Register</md-button>
+        <md-button id="register-to-lesson" ng-click="registerToLesson()">Register</md-button>
     </md-card-actions>
 </md-card>

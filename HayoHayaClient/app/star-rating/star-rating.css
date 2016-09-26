@@ -1,0 +1,124 @@
+.star-rating {
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+.small .star-rating-preview .star {
+    font-size: 35px;
+}
+
+.star-raiting-container .star {
+    padding: 1px;
+    color: #ddd;
+    font-size: 20px;
+    list-style-type: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.star-raiting-container .star.filled {
+    color: #fd0;
+}
+
+.star-rating-preview-star {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 15px;
+}
+
+.star-rating.readonly .star.filled {
+    color: #666;
+}
+
+.star-rating-preview .star {
+    font-size: 55px;
+    display: block;
+}
+
+.star-rating-preview .star.filled {
+    position: absolute;
+    clip-path: rect(0, 100%, 0, 50%);
+    top: 0;
+    left: 0;
+}
+
+.star-rating-preview .star.unfilled {
+}
+
+.star-rating-preview .rating-value {
+    font-size: 35px;
+}
+
+.hide-selected-text *::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.star-rating-preview .star-info {
+    display: inline-block;
+}
+
+.star-raiting-container {
+    position: relative;
+    margin-left: 15px;
+}
+
+.card-title-media {
+
+}
+
+.star-rating {
+    width: 104px;
+    z-index: 10;
+    left: 0px;
+    border-radius: 5px;
+    top: 100%;
+}
+
+star-rating, .summary-header-container {
+    display: inline-block;
+}
+
+.summary-md-list {
+    text-align: center;
+}
+
+.summaries-list-item {
+    display: inline-block;
+    text-align: left;
+}
+
+.fade-animation {
+    display: block;
+    opacity: 1;
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.fade-animation.ng-enter {
+    opacity: 0;
+}
+
+.fade-animation.ng-enter-active {
+    opacity: 1;
+}
+
+.fade-animation.ng-leave {
+    position: absolute;
+    top: 70px;
+    opacity: 1;
+}
+
+.fade-animation.ng-leave-active {
+    opacity: 0;
+}
+
+.star.image {
+    width: 30px;
+    display: block;
+}
+
+.star-background{
+    background-color: grey;
+}
