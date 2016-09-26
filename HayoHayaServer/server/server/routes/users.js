@@ -77,7 +77,7 @@ router.get('/rank/:id', function (req, res, next) {
     var details = req.body;
     User.findById(id, function (err, user) {
 var averageRank = calculateRank(user.rank);
-res.status(200);
+res.status=200;
         res.send({averageRank});
     })
 });
