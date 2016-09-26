@@ -25,13 +25,13 @@
 					id: 'English'
 				},
 				{
-					id: 'AAA'
+					id: 'Geographical'
 				},
 				{
-					id: 'BBB'
+					id: 'Politics'
 				},
 				{
-					id: 'CCC'
+					id: 'Computer'
 				},
 				{
 					id: 'Literature'

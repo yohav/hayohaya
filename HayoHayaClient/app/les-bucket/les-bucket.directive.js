@@ -22,7 +22,7 @@
 				scope.offset = 0;
 				scope.privateLessons = [];
 				function loadPrivateLessons() {
-					lesLessonSrv.getPrivateLessons(scope.bucket.id, scope.offset, bucketConfiguration.length)
+					lesLessonSrv.getPrivateLessonsMock(scope.bucket.id, scope.offset, bucketConfiguration.length)
 						.then(function(privateLessons) {
 							scope.privateLessons = scope.privateLessons.concat(privateLessons);
 							scope.offset += privateLessons.length;
