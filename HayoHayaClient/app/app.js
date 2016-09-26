@@ -4,7 +4,8 @@
 			'ngMaterial',
 			'ngAnimate',
 			'ui.router',
-		'schemaForm'])
+		'schemaForm',
+		'ui.bootstrap'])
 		.config(config);
 
 	config.$inject = ['$stateProvider', '$urlRouterProvider'];
