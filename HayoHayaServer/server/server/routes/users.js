@@ -99,9 +99,7 @@ var calculateRank = function (rank) {
     var sum = rank.reduce(function (a, b) {
         return a+b;
     }, 0);
-    return sum / rank.length;
+    return (sum / rank.length);
 };
-
-
 
 module.exports = router;
