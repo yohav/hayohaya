@@ -13,17 +13,17 @@ router.post('/takeLesson', function (req, res,next) {
     User.findById(details.userId,function(err,user){
         if(err)
         {
-            console.error('error');
+            res.send({error:"500"});
         }
         Lesson.findById(details.lessonId,function(err,lesson){
             if(err)
             {
-                console.error('error');
+                res.send({error:"500"});
             }
             User.findById(lesson.publisher,function(err,publisher){
                 if(err)
                 {
-                    console.error('error');
+                    res.send({error:"500"});
                 }
                 if(user.points<lesson.pointsForCompletion){
                     res.send("error: user doesn't have enough points");
@@ -32,6 +32,7 @@ router.post('/takeLesson', function (req, res,next) {
                 PointsTransaction(user,publisher,lesson.pointsForCompletion);
                 user.takenLessons.push(details.lessonId);
                 user.save();
+                res.send({success:"transcation successful"});
             });
 
         });
