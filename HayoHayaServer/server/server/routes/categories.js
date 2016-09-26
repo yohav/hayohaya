@@ -5,7 +5,7 @@ var express = require('express');
 var router = express.Router();
 var models=require('../models');
 var Category=models.Category;
-var Lesson=model.Lesson;
+var Lesson=models.Lesson;
 router.get('/', function(req, res, next) {
     Category.find()
         .then(function(doc){

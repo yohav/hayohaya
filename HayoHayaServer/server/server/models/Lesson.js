@@ -5,7 +5,7 @@
 
 var mongoose=require('mongoose');
 mongoose.Promise = global.Promise;
-
+var User=require('./User');
 var Schema=mongoose.Schema;
 
 var LessonSchema=new Schema({
@@ -14,20 +14,12 @@ var LessonSchema=new Schema({
     publisher:String,
     description:String,
     pointsForCompletion:Number,
-    hours:Number,
-    theme:String
+    hours:Number
 },{ collection:'lessons'});
 
 var Lesson=mongoose.model('Lesson',LessonSchema);
-
- Lesson.EnrichLessons=function(lessons){
-    for(i in lessons){
-        AddUserDetails(lessons[i]);
-    }
-}
-
- Lesson.AddUserDetails=function(lesson){
-    User.findById(id,function(err,user){
+Lesson.AddUserDetails=function(lesson){
+    User.findById(lesson.publisher,function(err,user){
         if(err)
         {
             return false;
@@ -37,7 +29,13 @@ var Lesson=mongoose.model('Lesson',LessonSchema);
             picture:user.profile
         };
     });
-}
+};
+
+ Lesson.EnrichLessons=function(lessons){
+    for(i in lessons){
+        Lesson.AddUserDetails(lessons[i]._doc);
+    }
+};
 
 
 module.exports=Lesson;
