@@ -24,7 +24,8 @@ router.get('/getLessons/:id/:offset/:length', function(req, res, next) {
     Category.findById(id,function(err,category){
         if(err)
         {
-            res.send({error:"500"}).statusCode(500);
+res.status(500);
+            res.send({error:"500"});
         }
         var lessons=category.lessons.splice(offset,length);
         Lesson.find({'_id': { $in: lessons } })
@@ -58,7 +59,8 @@ router.put('/:id', function(req, res, next) {
     Category.findById(id,function(err,doc){
         if(err)
         {
-            res.send({error:"500"}).statusCode(500);
+res.status(500);
+            res.send({error:"500"});
         }
         doc=body;
         doc.save();
@@ -79,7 +81,5 @@ router.get('/?name=:name', function(req, res, next) {
             res.send(doc);
         });
 });
-
-
 
 module.exports = router;

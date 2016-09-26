@@ -35,7 +35,8 @@ router.put('/:id', function(req, res, next) {
     Lesson.findById(id,function(err,doc){
         if(err)
         {
-            res.send({error:"500"}).statusCode(500);
+res.status(500);
+            res.send({error:"500"});
         }
         doc.save();
     });
@@ -63,7 +64,8 @@ router.get('/?name=:name', function(req, res, next) {
 //    Lesson.findById(id,function(err,doc){
 //        if(err)
 //        {
-//            res.send({error:"500"}).statusCode(500);
+//res.status(500);
+//            res.send({error:"500"});
 //        }
 //        res.send(doc._doc.picture);
 //    });
