@@ -2,7 +2,7 @@
  * Created by lenovo on 9/25/2016.
  */
 
-   var app= angular.module('app', ['ngMaterial','ngAnimate','ui.router','jkAngularCarousel'])
+   var app= angular.module('app', ['ngMaterial','ngAnimate','ui.router','jkAngularCarousel','schemaForm'])
 
         .run(
         [          '$rootScope', '$state', '$stateParams',

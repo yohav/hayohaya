@@ -1,35 +1,39 @@
 <div ng-controller="lessonDetailsController as vm">
-    <form class="col-lg-6" ng-submit="vm.postLesson()">
-        <md-input-container class="md-block" flex-gt-sm>
-            <label>Name</label>
-            <input ng-model="vm.lesson.name" />
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-            <label>publisher</label>
-            <input ng-model="vm.lesson.publisher" />
-        </md-input-container>
 
-        <md-input-container class="md-block" flex-gt-sm>
-            <label>description</label>
-            <textarea ng-model="vm.lesson.description" ></textarea>
-        </md-input-container>
+    <form class="col-lg-6" sf-schema="vm.schema" sf-form="vm.form" sf-model="vm.lesson" ng-submit="vm.postLesson()"></form>
 
-        <md-input-container class="md-block" flex-gt-sm>
-            <label>pointsForCompletion</label>
-            <input type="number" ng-model="vm.lesson.pointsForCompletion" />
-        </md-input-container>
-
-        <md-input-container class="md-block" flex-gt-sm>
-            <label>hours</label>
-            <input type="number" ng-model="vm.lesson.hours" />
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-            <label>theme</label>
-            <input ng-model="vm.lesson.theme" />
-        </md-input-container>
-        <md-button type="submit" class="md-raised md-primary">Submit</md-button>
-    </form>
     <div class="col-lg-2">
         <img ng-src="{{vm.lesson.theme}}" class="md-card-image" alt="Washed Out">
     </div>
 </div>
+
+<!--<form class="col-lg-6" ng-submit="vm.postLesson()">-->
+    <!--<md-input-container class="md-block" flex-gt-sm>-->
+        <!--<label>Name</label>-->
+        <!--<input ng-model="vm.lesson.name" />-->
+    <!--</md-input-container>-->
+    <!--<md-input-container class="md-block" flex-gt-sm>-->
+        <!--<label>publisher</label>-->
+        <!--<input ng-model="vm.lesson.publisher" />-->
+    <!--</md-input-container>-->
+
+    <!--<md-input-container class="md-block" flex-gt-sm>-->
+        <!--<label>description</label>-->
+        <!--<textarea ng-model="vm.lesson.description" ></textarea>-->
+    <!--</md-input-container>-->
+
+    <!--<md-input-container class="md-block" flex-gt-sm>-->
+        <!--<label>pointsForCompletion</label>-->
+        <!--<input type="number" ng-model="vm.lesson.pointsForCompletion" />-->
+    <!--</md-input-container>-->
+
+    <!--<md-input-container class="md-block" flex-gt-sm>-->
+        <!--<label>hours</label>-->
+        <!--<input type="number" ng-model="vm.lesson.hours" />-->
+    <!--</md-input-container>-->
+    <!--<md-input-container class="md-block" flex-gt-sm>-->
+        <!--<label>theme</label>-->
+        <!--<input ng-model="vm.lesson.theme" />-->
+    <!--</md-input-container>-->
+    <!--<md-button type="submit" class="md-raised md-primary">Submit</md-button>-->
+<!--</form>-->

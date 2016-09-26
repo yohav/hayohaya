@@ -13,4 +13,49 @@ function LessonDetailsService($http,$q,serverUrl){
         });
     };
 
+    this.lessonSchema=()=>{
+      var defer=$q.defer();
+
+        defer.resolve({
+            "type": "object",
+            "title": "Lesson",
+            "properties": {
+                "name": {
+                    "title": "Name",
+                    "type": "string"
+                },
+                "publisher": {
+                    "title": "Publisher",
+                    "type": "string"
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
+                "pointsForCompletion": {
+                    "title": "Points For Completion",
+                    "type": "number"
+                },
+                "hours": {
+                    "title": "Hours",
+                    "type": "number"
+                },
+                "theme": {
+                    "title": "Theme",
+                    "type": "string"
+                },
+                "questions": {
+                    "title": "Questions",
+                    "type": "array",
+                    "items": {
+                        "title": "Question",
+                        "type": "string"
+                    }
+                }
+//          }
+            }
+        });
+        return defer.promise;
+    };
+
 }
