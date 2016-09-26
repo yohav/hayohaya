@@ -18,3 +18,7 @@
     display: flex;
     flex-flow: column;
 }
+
+.md-card-root {
+    height: 200px;
+}
