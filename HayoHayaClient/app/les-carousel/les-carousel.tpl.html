@@ -1,0 +1,9 @@
+<div class="carousel">
+	<img ng-click="moveLeft()" class="carousel-button left" src="assets/img/left-arrow.svg"/>
+	<div class="carousel-content">
+		<div ng-repeat="bucket in buckets | limitTo:3:offset" class="bucket-container">
+			<les-bucket bucket="bucket"></les-bucket>
+		</div>
+	</div>
+	<img ng-click="moveRight()" class="carousel-button right" src="assets/img/right-arrow.svg"/>
+</div>
