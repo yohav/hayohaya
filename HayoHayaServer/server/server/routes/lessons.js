@@ -13,6 +13,16 @@ router.get('/', function (req, res, next) {
     });
 });
 
+router.get('/:id', function (req, res, next) {
+    var id=req.params.id;
+    Lesson.findById(id)
+        .populate('teacher')
+        .exec(function (err, doc) {
+            Utils.CleanUsers([doc]);
+            res.send(doc);
+        });
+});
+
 router.post('/lessons/', function (req, res, next) {
     var heroes = req.body;
     Lesson.find({ '_id': { $in: heroes } })

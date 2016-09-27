@@ -43,6 +43,14 @@ router.post('/categories/', function(req, res, next) {
         });
 });
 
+router.get('/:id', function (req, res, next) {
+    var id=req.params.id;
+    Category.findById(id)
+        .exec(function (err, doc) {
+            res.send(doc);
+        });
+});
+
 router.post('/', function(req, res, next) {
     console.log(req.body);
     var data=new Category(req.body);
