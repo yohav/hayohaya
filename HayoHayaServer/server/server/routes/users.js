@@ -23,28 +23,32 @@ router.post('/takeLesson', function (req, res, next) {
     var details = req.body;
     User.findById(details.userId, function (err, user) {
         if (err) {
-            res.status(500).send({ error: "500" });
+            res.send("error in user id");
         }
         Lesson.findById(details.lessonId, function (err, lesson) {
             if (err) {
-                res.status(500).send({ error: "500" });
+                res.send("error in lesson id");
             }
             User.findById(lesson.teacher, function (err, teacher) {
                 if (err) {
-                    res.status(500).send({ error: "500" });
+                    res.send("error in teacher id");
                 }
 
                 if (!PointsTransaction(user, teacher, lesson.price)) {
                     res.send("error: doesn't have enough points");
+                    return;
                 }
-                user.takenLessons.push(details.lessonId);
+                user.takenLessons=user.takenLessons.concat(details.lessonId);
+                user.markModified('takenLessons');
+                user.markModified('points');
                 user.save();
-                res.send({ success: "transcation successful" });
+                teacher.save();
+                res.send("transcation successful");
             });
 
         });
     });
-    res.send("added lesson to user");
+
 });
 
 function PointsTransaction(from, to, amount) {
