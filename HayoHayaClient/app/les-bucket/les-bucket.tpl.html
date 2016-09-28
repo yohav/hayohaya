@@ -1,6 +1,13 @@
 <div class="bucket" >
-	<span class="add-label">Add Lesson<span/>
-	<img class="add" ng-click="addLesson()" src="assets/img/add.svg"/>
+	<md-toolbar>
+		<div class="md-toolbar-tools">
+			<h2>{{bucket.name}}</h2>
+		</div>
+	</md-toolbar>
+
+	<md-button ng-click="addLesson()" class="md-raised md-primary">
+		<span class="glyphicon glyphicon-plus"></span>Add Lesson
+	</md-button>
 	<div ng-repeat="privateLesson in privateLessons">
 		<les-card private-lesson="privateLesson"></les-card>
 	</div>

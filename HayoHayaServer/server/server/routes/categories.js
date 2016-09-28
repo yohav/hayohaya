@@ -74,8 +74,11 @@ router.put('/:id', function(req, res, next) {
 
 router.delete('/:id', function(req, res, next) {
     var id=req.params.id;
-    Category.findByIdAndRemove(id).exec();
-    res.send(id+" deleted");
+    Category.findOneAndRemove({_id: id}, function(err){
+        if(err)throw err;
+        res.send(id+" deleted");
+    });
+
 });
 
 router.get('/?name=:name', function(req, res, next) {

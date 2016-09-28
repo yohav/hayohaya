@@ -34,10 +34,11 @@
 				scope.offset = 0;
 				scope.privateLessons = [];
 				function loadPrivateLessons() {
-					lesLessonSrv.getPrivateLessonsMock(scope.bucket.id, scope.offset, bucketConfiguration.length)
+					lesLessonSrv.getPrivateLessons(scope.bucket._id, scope.offset, bucketConfiguration.length)
 						.then(function(privateLessons) {
-							scope.privateLessons = scope.privateLessons.concat(privateLessons);
-							scope.offset += privateLessons.length;
+							var lessonsData=privateLessons.data
+							scope.privateLessons = scope.privateLessons.concat(lessonsData);
+							scope.offset += lessonsData.length;
 						});
 				}
 				loadPrivateLessons();

@@ -75,7 +75,7 @@ router.get('/rank/:id', function (req, res, next) {
     var details = req.body;
     User.findById(id, function (err, user) {
         var averageRank = calculateRank(user.rank);
-        res.status(200).send({averageRank});
+        res.status(200).send({average:averageRank,count:user.rank.length});
     })
 });
 
@@ -88,6 +88,28 @@ router.post('/rank/:id', function (req, res, next) {
         var averageRank = calculateRank(user.rank);
         res.status(200).send({averageRank});
     })
+});
+
+router.put('/:id', function (req, res, next) {
+    var id = req.params.id;
+    var newData=req.body;
+    User.findById(id, function (err, doc) {
+        if (err) {
+            res.status(500).send({ error: "500" });
+        }
+        doc=newData;
+        doc.save();
+        res.send(id + " updated");
+    });
+
+});
+
+router.delete('/:id', function (req, res, next) {
+    var id = req.params.id;
+    User.findOneAndRemove({_id: id}, function(err){
+        if(err)throw err;
+        res.send(id+" deleted");
+    });
 });
 
 var calculateRank = function (rank) {

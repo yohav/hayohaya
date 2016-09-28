@@ -4,12 +4,21 @@
             <span class="md-headline" ng-model="modelName">{{privateLesson.name}}</span>
             <div>
                 <span class="md-subhead card-metadata">{{privateLesson.description}}</span>
-                <span class="md-subhead card-metadata">Hours : {{privateLesson.hours}}</span>
+                <span class="md-subhead card-metadata">Price :
+                    <span class="glyphicon glyphicon-usd"></span>
+                    {{privateLesson.price}}
+                </span>
+                <span class="md-subhead card-metadata">Hours :
+                    <span class="glyphicon glyphicon-time"></span>
+                    {{privateLesson.hours}}
+                </span>
             </div>
         </md-card-title-text>
         <md-card-title-media class="card-title-media" ng-mouseenter="showStars = true"
                              ng-mouseleave="showStars = false">
-            <div class="md-media-sm card-media"></div>
+            <div class="md-media-sm">
+                <img ng-src="{{privateLesson.teacher.picture}}" class="img-circle img-thumbnail">
+            </div>
             <!--                        <md-tooltip md-direction="left">
                                         {{privateLesson.publisher.name}}
                                         <star-rating stars="5" outer-star-selection="stars" outer-percent="rating" rating-percent="50" star></star-rating>
@@ -18,6 +27,9 @@
         </md-card-title-media>
     </md-card-title>
     <md-card-actions layout="row" layout-align="start center">
-        <md-button id="register-to-lesson" ng-click="registerToLesson()">Register</md-button>
+        <md-button class="md-raised md-warn" id="register-to-lesson" ng-click="registerToLesson()">
+            <span class="glyphicon glyphicon-pencil"></span>
+            Register
+        </md-button>
     </md-card-actions>
 </md-card>

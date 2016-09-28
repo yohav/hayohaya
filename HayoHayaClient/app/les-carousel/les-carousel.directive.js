@@ -24,9 +24,9 @@
 				scope.buckets = [];
 				scope.offset = 0;
 				function loadBuckets() {
-					lesBucketSrv.getBucketsMock()
+					lesBucketSrv.getBuckets()
 						.then(function(buckets) {
-							scope.buckets = scope.buckets.concat(buckets);
+							scope.buckets = scope.buckets.concat(buckets.data);
 						});
 				}
 				loadBuckets();

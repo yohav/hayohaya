@@ -9,19 +9,19 @@
 
     lessonRegistrationService.$inject = ['$http', 'appConfiguration'];
 
-    function lessonRegistrationService($http, serverUrl) {
+    function lessonRegistrationService($http, appConfiguration) {
         return {
             registerToLesson: registerToLesson
         };
 
         function registerToLesson(userId, lessonId) {
-            var url = serverUrl.serverUrl + 'users/takeLesson';
+            var url = appConfiguration.serverUrl + '/users/takeLesson';
             var data =
             {
                 userId: userId,
                 lessonId: lessonId
             };
-            $http.post(url, data)
+           return $http.post(url, data);
         }
     }
 })();

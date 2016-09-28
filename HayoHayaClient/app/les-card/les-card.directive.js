@@ -7,9 +7,9 @@
         .module('app')
         .directive('lesCard', lesCardDirective);
 
-    lesCardDirective.$inject = ['lessonRegistrationService'];
+    lesCardDirective.$inject = ['lessonRegistrationService','appConfiguration'];
 
-    function lesCardDirective(lessonRegistrationService) {
+    function lesCardDirective(lessonRegistrationService,appConfiguration) {
         return {
             restrict: 'EA',
             scope: {
@@ -19,7 +19,13 @@
             link: function (scope, element, attrs) {
                 scope.registerToLesson = function (){
                     var privateLesson = scope.privateLesson;
-                    lessonRegistrationService.registerToLesson(privateLesson._id, privateLesson.publisher._id);
+                    lessonRegistrationService.registerToLesson(appConfiguration.userId,privateLesson._id)
+                    .then(function(response){
+                            var data=response.data;
+                            if(data!='error'){
+                                alert("registered to lesson!");
+                            }
+                        });
                 };
             }
         }

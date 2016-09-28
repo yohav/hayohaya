@@ -8,9 +8,13 @@
 	function lesLessonSrv($http, $q, appConfiguration) {
 		return {
 			getPrivateLessons: getPrivateLessons,
-			getPrivateLessonsMock: getPrivateLessonsMock
+			getPrivateLessonsMock: getPrivateLessonsMock,
+			addLesson:addLesson
 		};
 
+		function addLesson(lesson) {
+			return $http.post(appConfiguration.serverUrl + '/lessons',lesson);
+		}
 		function getPrivateLessons(bucketId, offset, length) {
 			return $http.get(appConfiguration.serverUrl + '/categories/getLessons/' + bucketId + '/' + offset + '/' + length);
 		}
